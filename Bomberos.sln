@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bomberos.Web", "src\Bomberos.Web\Bomberos.Web.csproj", "{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bomberos.BLL", "src\Bomberos.BLL\Bomberos.BLL.csproj", "{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bomberos.DAL", "src\Bomberos.DAL\Bomberos.DAL.csproj", "{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bomberos.Entities", "src\Bomberos.Entities\Bomberos.Entities.csproj", "{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base de datos", "Base de datos", "{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E10}"
+	ProjectSection(SolutionItems) = preProject
+		1. Set-up.sql = 1. Set-up.sql
+		2. Initial Data.sql = 2. Initial Data.sql
+		3. Stored Procedures.sql = 3. Stored Procedures.sql
+		4. Datos de ejemplo adicionales.sql = 4. Datos de ejemplo adicionales.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentación", "Documentación", "{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E11}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		docs\Manual Tecnico.md = docs\Manual Tecnico.md
+		docs\Manual de Usuario.md = docs\Manual de Usuario.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4E01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F1C2B3A-1D4E-4A5B-9C01-0A1B2C3D4EFF}
+	EndGlobalSection
+EndGlobal

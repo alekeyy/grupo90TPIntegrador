@@ -1,0 +1,162 @@
+/* ==========================================================================
+   Sistema de Gestión - Bomberos Voluntarios
+   Estilos propios sobre Bootstrap 5.3
+   ========================================================================== */
+:root {
+    --app-rojo: #c62828;
+    --app-rojo-oscuro: #8e1b1b;
+    --app-sidebar-bg: #1f2329;
+    --app-sidebar-hover: #2c323a;
+    --app-sidebar-texto: #c9d1d9;
+    --app-sidebar-ancho: 260px;
+    --bs-primary: #c62828;
+    --bs-primary-rgb: 198, 40, 40;
+    --bs-link-color: #b71c1c;
+    --bs-link-color-rgb: 183, 28, 28;
+    --bs-link-hover-color: #8e1b1b;
+    --bs-body-bg: #f4f6f9;
+}
+
+body { background: var(--bs-body-bg); }
+
+/* Botones primarios con la identidad del cuartel */
+.btn-primary {
+    --bs-btn-bg: var(--app-rojo);
+    --bs-btn-border-color: var(--app-rojo);
+    --bs-btn-hover-bg: var(--app-rojo-oscuro);
+    --bs-btn-hover-border-color: var(--app-rojo-oscuro);
+    --bs-btn-active-bg: var(--app-rojo-oscuro);
+    --bs-btn-active-border-color: var(--app-rojo-oscuro);
+    --bs-btn-disabled-bg: var(--app-rojo);
+    --bs-btn-disabled-border-color: var(--app-rojo);
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--app-rojo);
+    --bs-btn-border-color: var(--app-rojo);
+    --bs-btn-hover-bg: var(--app-rojo);
+    --bs-btn-hover-border-color: var(--app-rojo);
+    --bs-btn-active-bg: var(--app-rojo-oscuro);
+}
+.form-control:focus, .form-select:focus {
+    border-color: #e57373;
+    box-shadow: 0 0 0 .2rem rgba(198, 40, 40, .2);
+}
+
+/* ---------------- Estructura ---------------- */
+.app-shell { display: flex; min-height: 100vh; }
+.app-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+.app-content { flex: 1 1 auto; padding: 1.5rem; }
+.app-footer { padding: .75rem 1.5rem; font-size: .8rem; color: #6c757d; border-top: 1px solid #e3e6ea; background: #fff; }
+
+.app-topbar {
+    display: flex; align-items: center; gap: .5rem;
+    background: #fff; padding: .75rem 1.5rem;
+    border-bottom: 1px solid #e3e6ea; position: sticky; top: 0; z-index: 1020;
+}
+.app-topbar-title { font-weight: 600; color: #333; }
+
+/* ---------------- Menú lateral ---------------- */
+.app-sidebar {
+    --bs-offcanvas-width: var(--app-sidebar-ancho);
+    --bs-offcanvas-bg: var(--app-sidebar-bg);
+    background: var(--app-sidebar-bg);
+    color: var(--app-sidebar-texto);
+}
+@media (min-width: 992px) {
+    .app-sidebar {
+        width: var(--app-sidebar-ancho); flex: 0 0 var(--app-sidebar-ancho);
+        position: sticky; top: 0; height: 100vh; overflow-y: auto;
+        /* Bootstrap deja transparente .offcanvas-lg en pantallas grandes */
+        background-color: var(--app-sidebar-bg) !important;
+    }
+}
+.app-brand { background: var(--app-rojo); padding: 1rem 1.25rem; }
+.app-brand-link { color: #fff; text-decoration: none; display: flex; align-items: center; gap: .6rem; font-weight: 700; font-size: 1.15rem; }
+.app-brand-link:hover { color: #fff; }
+.app-brand-link .bi { font-size: 1.8rem; }
+.app-brand-link small { display: block; font-weight: 400; font-size: .75rem; opacity: .85; line-height: 1; }
+
+.app-nav { padding: .75rem 0; }
+.app-nav .nav-link, .app-nav .nav-group {
+    display: flex; align-items: center; gap: .65rem; width: 100%;
+    padding: .55rem 1.25rem; color: var(--app-sidebar-texto);
+    background: none; border: 0; text-align: left; text-decoration: none; font-size: .93rem;
+}
+.app-nav .nav-link:hover, .app-nav .nav-group:hover { background: var(--app-sidebar-hover); color: #fff; }
+.app-nav .nav-link.active { background: rgba(198, 40, 40, .9); color: #fff; }
+.app-nav .nav-group[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+.app-nav .chevron { transition: transform .2s; font-size: .75rem; }
+.app-nav .nav-sub .nav-link { padding-left: 3.1rem; font-size: .88rem; }
+
+/* ---------------- Encabezado de página ---------------- */
+.page-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: 1.25rem; }
+.page-header h1 { font-size: 1.5rem; margin: 0; font-weight: 600; }
+.page-header .subtitulo { color: #6c757d; font-size: .9rem; margin: 0; }
+
+.card { border: 0; box-shadow: 0 1px 3px rgba(0, 0, 0, .08); }
+.card-header { background: #fff; font-weight: 600; }
+.card-form { border-top: 3px solid var(--app-rojo); }
+
+/* ---------------- Indicadores del dashboard ---------------- */
+.kpi { display: flex; flex-direction: row; align-items: center; gap: 1rem; padding: 1.1rem; height: 100%; }
+.kpi-icono { width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center; font-size: 1.5rem; flex: 0 0 52px; }
+.kpi-valor { font-size: 1.6rem; font-weight: 700; line-height: 1.1; }
+.kpi-etiqueta { color: #6c757d; font-size: .85rem; }
+.kpi-detalle { font-size: .75rem; color: #8a939b; }
+.kpi-rojo { background: #fdecea; color: #c62828; }
+.kpi-verde { background: #e8f5e9; color: #2e7d32; }
+.kpi-azul { background: #e3f2fd; color: #1565c0; }
+.kpi-naranja { background: #fff3e0; color: #ef6c00; }
+.kpi-violeta { background: #f3e5f5; color: #6a1b9a; }
+.kpi-gris { background: #eceff1; color: #455a64; }
+.chart-box { position: relative; height: 280px; }
+
+/* ---------------- Grillas ---------------- */
+.grid { margin-bottom: 0; }
+.grid > thead > tr > th, .grid > tbody > tr > th { background: #f8f9fa; font-weight: 600; font-size: .85rem; white-space: nowrap; }
+.grid td { vertical-align: middle; font-size: .9rem; }
+.grid .acciones { white-space: nowrap; text-align: right; width: 1%; }
+.grid .acciones .btn { padding: .2rem .45rem; }
+.grid-pager td { padding: .75rem !important; background: #fff !important; }
+.grid-pager table { margin: 0 auto; }
+.grid-pager table td { padding: 0 2px !important; border: 0; }
+.grid-pager a, .grid-pager span {
+    display: inline-block; min-width: 2rem; padding: .3rem .55rem; border-radius: .375rem;
+    border: 1px solid #dee2e6; text-align: center; text-decoration: none; color: var(--app-rojo); background: #fff;
+}
+.grid-pager span { background: var(--app-rojo); border-color: var(--app-rojo); color: #fff; }
+.grid-vacia { padding: 2rem; text-align: center; color: #6c757d; }
+.fila-vencida > td { background-color: #fdecea !important; }
+.fila-por-vencer > td { background-color: #fff8e1 !important; }
+
+.sev-alta { background-color: #ef6c00; color: #fff; }
+
+/* Semáforo de vencimientos */
+.semaforo { display: inline-block; width: .8rem; height: .8rem; border-radius: 50%; margin-right: .35rem; vertical-align: middle; }
+.semaforo-verde { background: #2e7d32; }
+.semaforo-amarillo { background: #f9a825; }
+.semaforo-rojo { background: #c62828; }
+
+.chk-bs { display: inline-flex; align-items: center; gap: .4rem; padding: .375rem 0; }
+.chk-bs input[type=checkbox] { width: 1.1rem; height: 1.1rem; accent-color: var(--app-rojo); }
+
+/* Validaciones */
+.validador { display: block; font-size: .8rem; color: var(--bs-danger); margin-top: .2rem; }
+.form-label .req { color: var(--bs-danger); margin-left: 2px; }
+
+/* DetailsView / FormView */
+.detalle th { width: 40%; background: #f8f9fa; font-weight: 600; font-size: .85rem; }
+.detalle td { font-size: .9rem; }
+
+.resumen-total { font-size: 1.1rem; font-weight: 700; }
+
+@media (max-width: 575.98px) {
+    .app-content { padding: 1rem; }
+    .page-header h1 { font-size: 1.25rem; }
+}
+
+@media print {
+    .app-sidebar, .app-topbar, .app-footer, .no-print, .btn, .grid-pager { display: none !important; }
+    .app-content { padding: 0; }
+    .card { box-shadow: none; }
+}

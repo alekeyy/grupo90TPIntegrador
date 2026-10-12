@@ -1,0 +1,12 @@
+# Visual Studio / MSBuild
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.cache
+packages/
+TestResults/
+
+# Logs de la aplicación
+src/Bomberos.Web/App_Data/Logs/
