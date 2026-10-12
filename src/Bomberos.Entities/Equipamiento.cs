@@ -1,11 +1,10 @@
-using System;
+﻿using System;
 
 namespace Bomberos.Entities
 {
     /// <summary>
-    /// Equipo o herramienta del cuartel (tabla Equipamiento).
+    /// Tabla Equipamiento.
     /// </summary>
-    [Serializable]
     public class Equipamiento
     {
         public int IDEquipamiento { get; set; }
@@ -17,14 +16,5 @@ namespace Bomberos.Entities
         public DateTime? FechaProximoMantenimiento { get; set; }
         public int IDTipoEquipamiento { get; set; }
         public int IDCategoriaEquipamiento { get; set; }
-
-        public string TipoNombre { get; set; }
-        public string CategoriaNombre { get; set; }
-
-        /// <summary>Indica si el mantenimiento programado está vencido.</summary>
-        public bool MantenimientoVencido
-        {
-            get { return FechaProximoMantenimiento.HasValue && FechaProximoMantenimiento.Value.Date < DateTime.Today; }
-        }
     }
 }

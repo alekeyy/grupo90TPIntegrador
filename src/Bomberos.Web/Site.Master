@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Bomberos.Web.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Bomberos.Web.SiteMaster" %>
 <!DOCTYPE html>
 <html lang="es">
 <head runat="server">
@@ -11,113 +11,86 @@
     <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
 </head>
 <body>
-    <form id="form1" runat="server" class="app-form">
+    <form id="form1" runat="server">
         <div class="app-shell">
-            <!-- =========================== MENÚ LATERAL =========================== -->
-            <aside class="offcanvas-lg offcanvas-start app-sidebar" tabindex="-1" id="sidebar" aria-labelledby="sidebarTitulo">
+            <!-- Menú lateral (offcanvas en pantallas chicas) -->
+            <aside class="offcanvas-lg offcanvas-start app-sidebar" tabindex="-1" id="sidebar">
                 <div class="offcanvas-header app-brand">
-                    <a runat="server" href="~/Default.aspx" class="app-brand-link" id="sidebarTitulo">
-                        <i class="bi bi-fire"></i>
-                        <span>Bomberos<small>Voluntarios</small></span>
-                    </a>
+                    <a runat="server" href="~/Default.aspx" class="app-brand-link"><i class="bi bi-fire"></i> Bomberos Voluntarios</a>
                     <button type="button" class="btn-close btn-close-white d-lg-none" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Cerrar"></button>
                 </div>
                 <div class="offcanvas-body p-0">
                     <nav class="app-nav w-100" aria-label="Menú principal">
-                        <a runat="server" href="~/Default.aspx" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                        <a runat="server" href="~/Default.aspx" class="nav-link"><i class="bi bi-house"></i> Inicio</a>
 
-                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnuPersonal" aria-expanded="false">
+                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnu0" aria-expanded="false">
                             <i class="bi bi-people"></i> Personal <i class="bi bi-chevron-down ms-auto chevron"></i>
                         </button>
-                        <div class="collapse nav-sub" id="mnuPersonal">
+                        <div class="collapse nav-sub" id="mnu0">
                             <a runat="server" href="~/Personal/Voluntarios.aspx" class="nav-link">Voluntarios</a>
-                            <a runat="server" href="~/Catalogos/Catalogo.aspx?tipo=Rangos" class="nav-link">Rangos</a>
+                            <a runat="server" href="~/Personal/Rangos.aspx" class="nav-link">Rangos</a>
                             <a runat="server" href="~/Personal/HistorialRangos.aspx" class="nav-link">Historial de rangos</a>
-                            <a runat="server" href="~/Catalogos/Catalogo.aspx?tipo=Roles" class="nav-link">Roles</a>
+                            <a runat="server" href="~/Personal/Roles.aspx" class="nav-link">Roles</a>
                             <a runat="server" href="~/Personal/HistorialRoles.aspx" class="nav-link">Historial de roles</a>
                         </div>
-
-                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnuVehiculos" aria-expanded="false">
+                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnu1" aria-expanded="false">
                             <i class="bi bi-truck-front"></i> Vehículos <i class="bi bi-chevron-down ms-auto chevron"></i>
                         </button>
-                        <div class="collapse nav-sub" id="mnuVehiculos">
+                        <div class="collapse nav-sub" id="mnu1">
                             <a runat="server" href="~/Vehiculos/Vehiculos.aspx" class="nav-link">Vehículos</a>
-                            <a runat="server" href="~/Catalogos/Catalogo.aspx?tipo=TipoVehiculo" class="nav-link">Tipos de vehículo</a>
-                            <a runat="server" href="~/Vehiculos/Documentacion.aspx" class="nav-link">Documentación</a>
+                            <a runat="server" href="~/Vehiculos/TipoVehiculo.aspx" class="nav-link">Tipos de vehículo</a>
+                            <a runat="server" href="~/Vehiculos/DocumentacionVehiculo.aspx" class="nav-link">Documentación</a>
                         </div>
-
-                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnuEquipamiento" aria-expanded="false">
+                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnu2" aria-expanded="false">
                             <i class="bi bi-tools"></i> Equipamiento <i class="bi bi-chevron-down ms-auto chevron"></i>
                         </button>
-                        <div class="collapse nav-sub" id="mnuEquipamiento">
+                        <div class="collapse nav-sub" id="mnu2">
                             <a runat="server" href="~/Equipamiento/Equipamiento.aspx" class="nav-link">Equipamiento</a>
-                            <a runat="server" href="~/Catalogos/Catalogo.aspx?tipo=TipoEquipamiento" class="nav-link">Tipos de equipamiento</a>
-                            <a runat="server" href="~/Catalogos/Catalogo.aspx?tipo=CategoriaEquipamiento" class="nav-link">Categorías</a>
+                            <a runat="server" href="~/Equipamiento/TipoEquipamiento.aspx" class="nav-link">Tipos de equipamiento</a>
+                            <a runat="server" href="~/Equipamiento/CategoriaEquipamiento.aspx" class="nav-link">Categorías de equipamiento</a>
                         </div>
-
-                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnuOperaciones" aria-expanded="false">
+                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnu3" aria-expanded="false">
                             <i class="bi bi-broadcast"></i> Operaciones <i class="bi bi-chevron-down ms-auto chevron"></i>
                         </button>
-                        <div class="collapse nav-sub" id="mnuOperaciones">
+                        <div class="collapse nav-sub" id="mnu3">
                             <a runat="server" href="~/Operaciones/Incidentes.aspx" class="nav-link">Incidentes</a>
                             <a runat="server" href="~/Operaciones/Misiones.aspx" class="nav-link">Misiones</a>
-                            <a runat="server" href="~/Catalogos/Catalogo.aspx?tipo=TipoMision" class="nav-link">Tipos de misión</a>
+                            <a runat="server" href="~/Operaciones/TipoMision.aspx" class="nav-link">Tipos de misión</a>
                         </div>
-
-                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnuCapacitacion" aria-expanded="false">
+                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnu4" aria-expanded="false">
                             <i class="bi bi-mortarboard"></i> Capacitación <i class="bi bi-chevron-down ms-auto chevron"></i>
                         </button>
-                        <div class="collapse nav-sub" id="mnuCapacitacion">
+                        <div class="collapse nav-sub" id="mnu4">
                             <a runat="server" href="~/Capacitacion/Entrenamientos.aspx" class="nav-link">Entrenamientos</a>
-                            <a runat="server" href="~/Catalogos/Catalogo.aspx?tipo=TipoEntrenamiento" class="nav-link">Tipos de entrenamiento</a>
+                            <a runat="server" href="~/Capacitacion/TipoEntrenamiento.aspx" class="nav-link">Tipos de entrenamiento</a>
                         </div>
-
                         <a runat="server" href="~/Guardias/Guardias.aspx" class="nav-link"><i class="bi bi-calendar-week"></i> Guardias</a>
-
-                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnuFinanzas" aria-expanded="false">
+                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnu6" aria-expanded="false">
                             <i class="bi bi-cash-coin"></i> Finanzas <i class="bi bi-chevron-down ms-auto chevron"></i>
                         </button>
-                        <div class="collapse nav-sub" id="mnuFinanzas">
+                        <div class="collapse nav-sub" id="mnu6">
                             <a runat="server" href="~/Finanzas/Aportes.aspx" class="nav-link">Aportes</a>
-                            <a runat="server" href="~/Catalogos/Catalogo.aspx?tipo=TipoAporte" class="nav-link">Tipos de aporte</a>
+                            <a runat="server" href="~/Finanzas/TipoAporte.aspx" class="nav-link">Tipos de aporte</a>
                             <a runat="server" href="~/Finanzas/Gastos.aspx" class="nav-link">Gastos</a>
-                            <a runat="server" href="~/Catalogos/Catalogo.aspx?tipo=TipoGasto" class="nav-link">Tipos de gasto</a>
-                            <a runat="server" href="~/Catalogos/Catalogo.aspx?tipo=Caja" class="nav-link">Cajas</a>
-                            <a runat="server" href="~/Finanzas/MovimientosCaja.aspx" class="nav-link">Movimientos de caja</a>
-                        </div>
-
-                        <button type="button" class="nav-group" data-bs-toggle="collapse" data-bs-target="#mnuReportes" aria-expanded="false">
-                            <i class="bi bi-file-earmark-bar-graph"></i> Reportes <i class="bi bi-chevron-down ms-auto chevron"></i>
-                        </button>
-                        <div class="collapse nav-sub" id="mnuReportes">
-                            <a runat="server" href="~/Reportes/Reportes.aspx?cat=personal" class="nav-link">Personal</a>
-                            <a runat="server" href="~/Reportes/Reportes.aspx?cat=operaciones" class="nav-link">Operaciones</a>
-                            <a runat="server" href="~/Reportes/Reportes.aspx?cat=vehiculos" class="nav-link">Vehículos</a>
-                            <a runat="server" href="~/Reportes/Reportes.aspx?cat=equipamiento" class="nav-link">Equipamiento</a>
-                            <a runat="server" href="~/Reportes/Reportes.aspx?cat=finanzas" class="nav-link">Finanzas</a>
+                            <a runat="server" href="~/Finanzas/TipoGasto.aspx" class="nav-link">Tipos de gasto</a>
+                            <a runat="server" href="~/Finanzas/Caja.aspx" class="nav-link">Cajas</a>
+                            <a runat="server" href="~/Finanzas/MovimientoCaja.aspx" class="nav-link">Movimientos de caja</a>
                         </div>
                     </nav>
                 </div>
             </aside>
 
-            <!-- =========================== CONTENIDO =========================== -->
+            <!-- Contenido -->
             <div class="app-main">
                 <header class="app-topbar">
-                    <button type="button" class="btn btn-outline-secondary d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Abrir menú">
+                    <button type="button" class="btn btn-outline-secondary d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-label="Abrir menú">
                         <i class="bi bi-list"></i>
                     </button>
-                    <span class="app-topbar-title"><asp:Literal ID="litCuartel" runat="server" /></span>
-                    <span class="ms-auto text-muted small d-none d-sm-inline"><i class="bi bi-calendar3"></i> <asp:Literal ID="litFecha" runat="server" /></span>
+                    <span class="fw-semibold">Sistema de Gestión - Cuartel de Bomberos Voluntarios</span>
                 </header>
-
                 <main class="app-content">
-                    <asp:PlaceHolder ID="phMensajes" runat="server" />
                     <asp:ContentPlaceHolder ID="MainContent" runat="server" />
                 </main>
-
-                <footer class="app-footer">
-                    Sistema de Gestión de Cuartel de Bomberos Voluntarios &middot; Grupo 90 &middot; <asp:Literal ID="litAnio" runat="server" />
-                </footer>
             </div>
         </div>
     </form>

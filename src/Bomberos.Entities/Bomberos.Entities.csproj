@@ -12,7 +12,6 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,26 +35,33 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aporte.cs" />
-    <Compile Include="Catalogo.cs" />
-    <Compile Include="Constantes.cs" />
-    <Compile Include="Dashboard.cs" />
-    <Compile Include="DatosException.cs" />
-    <Compile Include="DocumentoVehiculo.cs" />
-    <Compile Include="Entrenamiento.cs" />
+    <Compile Include="Aportes.cs" />
+    <Compile Include="Caja.cs" />
+    <Compile Include="CategoriaEquipamiento.cs" />
+    <Compile Include="DocumentacionVehiculo.cs" />
+    <Compile Include="Entrenamientos.cs" />
     <Compile Include="Equipamiento.cs" />
-    <Compile Include="Gasto.cs" />
-    <Compile Include="Guardia.cs" />
-    <Compile Include="HistorialRango.cs" />
-    <Compile Include="HistorialRol.cs" />
-    <Compile Include="Incidente.cs" />
-    <Compile Include="ItemCombo.cs" />
-    <Compile Include="Mision.cs" />
+    <Compile Include="Gastos.cs" />
+    <Compile Include="Guardias.cs" />
+    <Compile Include="HistorialRangos.cs" />
+    <Compile Include="HistorialRoles.cs" />
+    <Compile Include="Incidentes.cs" />
+    <Compile Include="MisionEquipamiento.cs" />
+    <Compile Include="MisionVehiculo.cs" />
+    <Compile Include="MisionVoluntario.cs" />
+    <Compile Include="Misiones.cs" />
     <Compile Include="MovimientoCaja.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reporte.cs" />
-    <Compile Include="Vehiculo.cs" />
-    <Compile Include="Voluntario.cs" />
+    <Compile Include="Rangos.cs" />
+    <Compile Include="Roles.cs" />
+    <Compile Include="TipoAporte.cs" />
+    <Compile Include="TipoEntrenamiento.cs" />
+    <Compile Include="TipoEquipamiento.cs" />
+    <Compile Include="TipoGasto.cs" />
+    <Compile Include="TipoMision.cs" />
+    <Compile Include="TipoVehiculo.cs" />
+    <Compile Include="Vehiculos.cs" />
+    <Compile Include="Voluntarios.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,7 +14,6 @@
     <RootNamespace>Bomberos.Web</RootNamespace>
     <AssemblyName>Bomberos.Web</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <LangVersion>7.3</LangVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -50,31 +49,35 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Capacitacion\Entrenamientos.aspx" />
-    <Content Include="Catalogos\Catalogo.aspx" />
+    <Content Include="Capacitacion\TipoEntrenamiento.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Equipamiento\CategoriaEquipamiento.aspx" />
     <Content Include="Equipamiento\Equipamiento.aspx" />
-    <Content Include="Error.aspx" />
+    <Content Include="Equipamiento\TipoEquipamiento.aspx" />
     <Content Include="Finanzas\Aportes.aspx" />
+    <Content Include="Finanzas\Caja.aspx" />
     <Content Include="Finanzas\Gastos.aspx" />
-    <Content Include="Finanzas\MovimientosCaja.aspx" />
+    <Content Include="Finanzas\MovimientoCaja.aspx" />
+    <Content Include="Finanzas\TipoAporte.aspx" />
+    <Content Include="Finanzas\TipoGasto.aspx" />
     <Content Include="Guardias\Guardias.aspx" />
     <Content Include="Operaciones\Incidentes.aspx" />
-    <Content Include="Operaciones\MisionDetalle.aspx" />
     <Content Include="Operaciones\Misiones.aspx" />
+    <Content Include="Operaciones\TipoMision.aspx" />
     <Content Include="Personal\HistorialRangos.aspx" />
     <Content Include="Personal\HistorialRoles.aspx" />
+    <Content Include="Personal\Rangos.aspx" />
+    <Content Include="Personal\Roles.aspx" />
     <Content Include="Personal\Voluntarios.aspx" />
-    <Content Include="Reportes\Reportes.aspx" />
-    <Content Include="Vehiculos\Documentacion.aspx" />
+    <Content Include="Vehiculos\DocumentacionVehiculo.aspx" />
+    <Content Include="Vehiculos\TipoVehiculo.aspx" />
     <Content Include="Vehiculos\Vehiculos.aspx" />
     <Content Include="Site.Master" />
-    <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="Scripts\site.js" />
     <Content Include="Web.config" />
@@ -93,22 +96,26 @@
     <Compile Include="Capacitacion\Entrenamientos.aspx.designer.cs">
       <DependentUpon>Capacitacion\Entrenamientos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\Catalogo.aspx.cs">
-      <DependentUpon>Catalogos\Catalogo.aspx</DependentUpon>
+    <Compile Include="Capacitacion\TipoEntrenamiento.aspx.cs">
+      <DependentUpon>Capacitacion\TipoEntrenamiento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\Catalogo.aspx.designer.cs">
-      <DependentUpon>Catalogos\Catalogo.aspx</DependentUpon>
+    <Compile Include="Capacitacion\TipoEntrenamiento.aspx.designer.cs">
+      <DependentUpon>Capacitacion\TipoEntrenamiento.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Code\BasePage.cs" />
-    <Compile Include="Code\Logger.cs" />
-    <Compile Include="Code\TipoMensaje.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Equipamiento\CategoriaEquipamiento.aspx.cs">
+      <DependentUpon>Equipamiento\CategoriaEquipamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Equipamiento\CategoriaEquipamiento.aspx.designer.cs">
+      <DependentUpon>Equipamiento\CategoriaEquipamiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Equipamiento\Equipamiento.aspx.cs">
       <DependentUpon>Equipamiento\Equipamiento.aspx</DependentUpon>
@@ -117,12 +124,12 @@
     <Compile Include="Equipamiento\Equipamiento.aspx.designer.cs">
       <DependentUpon>Equipamiento\Equipamiento.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Error.aspx.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
+    <Compile Include="Equipamiento\TipoEquipamiento.aspx.cs">
+      <DependentUpon>Equipamiento\TipoEquipamiento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Error.aspx.designer.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
+    <Compile Include="Equipamiento\TipoEquipamiento.aspx.designer.cs">
+      <DependentUpon>Equipamiento\TipoEquipamiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finanzas\Aportes.aspx.cs">
       <DependentUpon>Finanzas\Aportes.aspx</DependentUpon>
@@ -131,6 +138,13 @@
     <Compile Include="Finanzas\Aportes.aspx.designer.cs">
       <DependentUpon>Finanzas\Aportes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Finanzas\Caja.aspx.cs">
+      <DependentUpon>Finanzas\Caja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finanzas\Caja.aspx.designer.cs">
+      <DependentUpon>Finanzas\Caja.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Finanzas\Gastos.aspx.cs">
       <DependentUpon>Finanzas\Gastos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -138,15 +152,26 @@
     <Compile Include="Finanzas\Gastos.aspx.designer.cs">
       <DependentUpon>Finanzas\Gastos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Finanzas\MovimientosCaja.aspx.cs">
-      <DependentUpon>Finanzas\MovimientosCaja.aspx</DependentUpon>
+    <Compile Include="Finanzas\MovimientoCaja.aspx.cs">
+      <DependentUpon>Finanzas\MovimientoCaja.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Finanzas\MovimientosCaja.aspx.designer.cs">
-      <DependentUpon>Finanzas\MovimientosCaja.aspx</DependentUpon>
+    <Compile Include="Finanzas\MovimientoCaja.aspx.designer.cs">
+      <DependentUpon>Finanzas\MovimientoCaja.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
+    <Compile Include="Finanzas\TipoAporte.aspx.cs">
+      <DependentUpon>Finanzas\TipoAporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finanzas\TipoAporte.aspx.designer.cs">
+      <DependentUpon>Finanzas\TipoAporte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\TipoGasto.aspx.cs">
+      <DependentUpon>Finanzas\TipoGasto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finanzas\TipoGasto.aspx.designer.cs">
+      <DependentUpon>Finanzas\TipoGasto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Guardias\Guardias.aspx.cs">
       <DependentUpon>Guardias\Guardias.aspx</DependentUpon>
@@ -162,19 +187,19 @@
     <Compile Include="Operaciones\Incidentes.aspx.designer.cs">
       <DependentUpon>Operaciones\Incidentes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Operaciones\MisionDetalle.aspx.cs">
-      <DependentUpon>Operaciones\MisionDetalle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Operaciones\MisionDetalle.aspx.designer.cs">
-      <DependentUpon>Operaciones\MisionDetalle.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Operaciones\Misiones.aspx.cs">
       <DependentUpon>Operaciones\Misiones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Operaciones\Misiones.aspx.designer.cs">
       <DependentUpon>Operaciones\Misiones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operaciones\TipoMision.aspx.cs">
+      <DependentUpon>Operaciones\TipoMision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\TipoMision.aspx.designer.cs">
+      <DependentUpon>Operaciones\TipoMision.aspx</DependentUpon>
     </Compile>
     <Compile Include="Personal\HistorialRangos.aspx.cs">
       <DependentUpon>Personal\HistorialRangos.aspx</DependentUpon>
@@ -190,6 +215,20 @@
     <Compile Include="Personal\HistorialRoles.aspx.designer.cs">
       <DependentUpon>Personal\HistorialRoles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Personal\Rangos.aspx.cs">
+      <DependentUpon>Personal\Rangos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Personal\Rangos.aspx.designer.cs">
+      <DependentUpon>Personal\Rangos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Personal\Roles.aspx.cs">
+      <DependentUpon>Personal\Roles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Personal\Roles.aspx.designer.cs">
+      <DependentUpon>Personal\Roles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Personal\Voluntarios.aspx.cs">
       <DependentUpon>Personal\Voluntarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -198,13 +237,6 @@
       <DependentUpon>Personal\Voluntarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reportes\Reportes.aspx.cs">
-      <DependentUpon>Reportes\Reportes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reportes\Reportes.aspx.designer.cs">
-      <DependentUpon>Reportes\Reportes.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -212,12 +244,19 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Vehiculos\Documentacion.aspx.cs">
-      <DependentUpon>Vehiculos\Documentacion.aspx</DependentUpon>
+    <Compile Include="Vehiculos\DocumentacionVehiculo.aspx.cs">
+      <DependentUpon>Vehiculos\DocumentacionVehiculo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vehiculos\Documentacion.aspx.designer.cs">
-      <DependentUpon>Vehiculos\Documentacion.aspx</DependentUpon>
+    <Compile Include="Vehiculos\DocumentacionVehiculo.aspx.designer.cs">
+      <DependentUpon>Vehiculos\DocumentacionVehiculo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vehiculos\TipoVehiculo.aspx.cs">
+      <DependentUpon>Vehiculos\TipoVehiculo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vehiculos\TipoVehiculo.aspx.designer.cs">
+      <DependentUpon>Vehiculos\TipoVehiculo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vehiculos\Vehiculos.aspx.cs">
       <DependentUpon>Vehiculos\Vehiculos.aspx</DependentUpon>
@@ -246,7 +285,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">

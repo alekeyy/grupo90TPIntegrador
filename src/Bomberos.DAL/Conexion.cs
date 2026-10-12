@@ -1,12 +1,11 @@
 using System.Configuration;
 using System.Data.SqlClient;
-using Bomberos.Entities;
 
 namespace Bomberos.DAL
 {
     /// <summary>
-    /// Punto único de acceso a la cadena de conexión.
-    /// La cadena se lee del archivo Web.config (sección connectionStrings, nombre "DBBomberos").
+    /// Punto único de acceso a la base de datos.
+    /// La cadena de conexión se lee del Web.config (connectionStrings, nombre "DBBomberos").
     /// </summary>
     public static class Conexion
     {
@@ -14,17 +13,11 @@ namespace Bomberos.DAL
 
         public static string CadenaConexion
         {
-            get
-            {
-                ConnectionStringSettings cs = ConfigurationManager.ConnectionStrings[NombreCadena];
-                if (cs == null || string.IsNullOrWhiteSpace(cs.ConnectionString))
-                    throw new DatosException("No se encontró la cadena de conexión '" + NombreCadena + "' en el archivo de configuración.");
-                return cs.ConnectionString;
-            }
+            get { return ConfigurationManager.ConnectionStrings[NombreCadena].ConnectionString; }
         }
 
         /// <summary>
-        /// Crea una nueva conexión (cerrada). Debe utilizarse dentro de un bloque using.
+        /// Crea una nueva conexión (cerrada). Usar siempre dentro de un bloque using.
         /// </summary>
         public static SqlConnection CrearConexion()
         {
