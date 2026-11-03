@@ -159,15 +159,19 @@ GO
 CREATE TABLE MisionVoluntario (
     IDMision INT NOT NULL,
     IDVoluntario INT NOT NULL,
+    IDRol INT NOT NULL,
     PRIMARY KEY (IDMision, IDVoluntario),
     FOREIGN KEY (IDMision) REFERENCES Misiones(IDMision),
-    FOREIGN KEY (IDVoluntario) REFERENCES Voluntarios(IDVoluntario)
+    FOREIGN KEY (IDVoluntario) REFERENCES Voluntarios(IDVoluntario),
+    FOREIGN KEY (IDRol) REFERENCES Roles(IDRol)
 )
 GO
  
 CREATE TABLE MisionVehiculo (
     IDMision INT NOT NULL,
     IDVehiculo INT NOT NULL,
+    KIlometrajeInicial INT NOT NULL,
+    KIlometrajeFinal INT NOT NULL,
     PRIMARY KEY (IDMision, IDVehiculo),
     FOREIGN KEY (IDMision) REFERENCES Misiones(IDMision),
     FOREIGN KEY (IDVehiculo) REFERENCES Vehiculos(IDVehiculo)
@@ -194,10 +198,18 @@ GO
 CREATE TABLE Entrenamientos (
     IDEntrenamiento INT PRIMARY KEY IDENTITY(1,1),
     IDTipoEntrenamiento INT NOT NULL,
-    IDVoluntario INT NOT NULL,
     Fecha DATE NOT NULL,
     Observaciones NVARCHAR(500) NULL,
     FOREIGN KEY (IDTipoEntrenamiento) REFERENCES TipoEntrenamiento(IDTipoEntrenamiento),
+    FOREIGN KEY (IDVoluntario) REFERENCES Voluntarios(IDVoluntario)
+)
+GO
+
+CREATE TABLE AsistenciaEntrenamiento (
+    IDEntrenamiento INT PRIMARY KEY IDENTITY(1,1),
+    IDVoluntario INT NOT NULL,
+    Observaciones NVARCHAR(500) NULL,
+    FOREIGN KEY (IDVoluntario) REFERENCES Entrenamientos(IDEntrenamiento),
     FOREIGN KEY (IDVoluntario) REFERENCES Voluntarios(IDVoluntario)
 )
 GO
