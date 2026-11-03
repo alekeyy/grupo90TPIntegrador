@@ -56,7 +56,7 @@ CREATE TABLE HistorialRoles (
 GO
  
 
--- 2. VEHÍCULOS
+-- 2. VEHï¿½CULOS
 CREATE TABLE TipoVehiculo (
     IDTipoVehiculo INT PRIMARY KEY IDENTITY(1,1),
     Nombre NVARCHAR(50) NOT NULL
@@ -66,7 +66,7 @@ GO
 CREATE TABLE Vehiculos (
     IDVehiculo INT PRIMARY KEY IDENTITY(1,1),
     Nombre NVARCHAR(100) NOT NULL,
-    Año INT NOT NULL,
+    AÃ±o INT NOT NULL,
     Patente NVARCHAR(10) NOT NULL UNIQUE,
     Estado NVARCHAR(30) NOT NULL DEFAULT 'Operativo',
     IDTipoVehiculo INT NOT NULL,
@@ -104,12 +104,24 @@ CREATE TABLE Equipamiento (
     Nombre NVARCHAR(100) NOT NULL,
     Estado NVARCHAR(30) NOT NULL DEFAULT 'Disponible',
     FechaCompra DATE NULL,
-    FechaUltimoMantenimiento DATE NULL,
-    FechaProximoMantenimiento DATE NULL,
+    FechaProximoMantenimiento DATE NULL,   -- fecha programada a futuro
     IDTipoEquipamiento INT NOT NULL,
     IDCategoriaEquipamiento INT NOT NULL,
     FOREIGN KEY (IDTipoEquipamiento) REFERENCES TipoEquipamiento(IDTipoEquipamiento),
     FOREIGN KEY (IDCategoriaEquipamiento) REFERENCES CategoriaEquipamiento(IDCategoriaEquipamiento)
+)
+GO
+
+CREATE TABLE MantenimientosEquipamiento (
+    IDMantenimiento INT PRIMARY KEY IDENTITY(1,1),
+    IDEquipamiento INT NOT NULL,
+    FechaMantenimiento DATE NOT NULL DEFAULT GETDATE(),
+    TipoMantenimiento NVARCHAR(20) NOT NULL
+        CHECK (TipoMantenimiento IN ('Preventivo', 'Correctivo')),
+    TareasRealizadas NVARCHAR(500) NOT NULL,
+    Costo DECIMAL(12,2) NOT NULL DEFAULT 0 CHECK (Costo >= 0),
+    Responsable NVARCHAR(100) NULL,        -- taller o proveedor que lo realizÃ³
+    FOREIGN KEY (IDEquipamiento) REFERENCES Equipamiento(IDEquipamiento)
 )
 GO
  
@@ -172,7 +184,7 @@ CREATE TABLE MisionEquipamiento (
 GO
  
 
--- 5. CAPACITACIÓN
+-- 5. CAPACITACIï¿½N
 CREATE TABLE TipoEntrenamiento (
     IDTipoEntrenamiento INT PRIMARY KEY IDENTITY(1,1),
     Nombre NVARCHAR(50) NOT NULL
@@ -201,54 +213,82 @@ CREATE TABLE Guardias (
 )
 GO
  
---7. GESTIÓN FINANCIERA
-CREATE TABLE TipoAporte (
-    IDTipoAporte INT PRIMARY KEY IDENTITY(1,1),
-    Nombre NVARCHAR(50) NOT NULL
-)
-GO
- 
-CREATE TABLE Aportes (
-    IDAporte INT PRIMARY KEY IDENTITY(1,1),
-    IDTipoAporte INT NOT NULL,
-    Fecha DATE NOT NULL DEFAULT GETDATE(),
-    Monto DECIMAL(12,2) NOT NULL,
-    Descripcion NVARCHAR(250) NULL,
-    FOREIGN KEY (IDTipoAporte) REFERENCES TipoAporte(IDTipoAporte)
-)
-GO
- 
-CREATE TABLE TipoGasto (
-    IDTipoGasto INT PRIMARY KEY IDENTITY(1,1),
-    Nombre NVARCHAR(50) NOT NULL
-)
-GO
- 
-CREATE TABLE Gastos (
-    IDGasto INT PRIMARY KEY IDENTITY(1,1),
-    Fecha DATE NOT NULL DEFAULT GETDATE(),
-    Monto DECIMAL(12,2) NOT NULL,
-    Descripcion NVARCHAR(250) NULL,
-    IDTipoGasto INT NOT NULL,
-    IDVoluntarioAutorizador INT NOT NULL,
-    FOREIGN KEY (IDTipoGasto) REFERENCES TipoGasto(IDTipoGasto),
-    FOREIGN KEY (IDVoluntarioAutorizador) REFERENCES Voluntarios(IDVoluntario)
-)
-GO
- 
+--7. GESTIÃ“N FINANCIERA
+
 CREATE TABLE Caja (
     IDCaja INT PRIMARY KEY IDENTITY(1,1),
     Nombre NVARCHAR(50) NOT NULL
 )
 GO
- 
+
+CREATE TABLE TipoAporte (
+    IDTipoAporte INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(50) NOT NULL
+)
+GO
+
+-- Origen de los aportes: persona, empresa u organismo (ej. subsidio)
+CREATE TABLE Donantes (
+    IDDonante INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(150) NOT NULL,
+    TipoDonante NVARCHAR(30) NOT NULL
+        CHECK (TipoDonante IN ('Persona', 'Empresa', 'Organismo')),
+    DocumentoFiscal NVARCHAR(20) NULL,   -- DNI o CUIT
+    Telefono NVARCHAR(30) NULL,
+    Email NVARCHAR(100) NULL
+)
+GO
+
+CREATE TABLE Aportes (
+    IDAporte INT PRIMARY KEY IDENTITY(1,1),
+    IDTipoAporte INT NOT NULL,
+    IDCaja INT NOT NULL,                 
+    IDDonante INT NULL,                  
+    Fecha DATE NOT NULL DEFAULT GETDATE(),
+    Monto DECIMAL(12,2) NOT NULL CHECK (Monto > 0),
+    Descripcion NVARCHAR(250) NULL,
+    FOREIGN KEY (IDTipoAporte) REFERENCES TipoAporte(IDTipoAporte),
+    FOREIGN KEY (IDCaja) REFERENCES Caja(IDCaja),
+    FOREIGN KEY (IDDonante) REFERENCES Donantes(IDDonante)
+)
+GO
+
+CREATE TABLE TipoGasto (
+    IDTipoGasto INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(50) NOT NULL
+)
+GO
+
+CREATE TABLE Gastos (
+    IDGasto INT PRIMARY KEY IDENTITY(1,1),
+    Fecha DATE NOT NULL DEFAULT GETDATE(),
+    Monto DECIMAL(12,2) NOT NULL CHECK (Monto > 0),
+    Descripcion NVARCHAR(250) NULL,
+    IDTipoGasto INT NOT NULL,
+    IDVoluntarioAutorizador INT NOT NULL,
+    IDCaja INT NOT NULL,                 -- caja de la que sale el dinero
+    FOREIGN KEY (IDTipoGasto) REFERENCES TipoGasto(IDTipoGasto),
+    FOREIGN KEY (IDVoluntarioAutorizador) REFERENCES Voluntarios(IDVoluntario),
+    FOREIGN KEY (IDCaja) REFERENCES Caja(IDCaja)
+)
+GO
+
 CREATE TABLE MovimientoCaja (
     IDMovimiento INT PRIMARY KEY IDENTITY(1,1),
     IDCaja INT NOT NULL,
     Fecha DATETIME NOT NULL DEFAULT GETDATE(),
-    TipoMovimiento NVARCHAR(10) NOT NULL CHECK (TipoMovimiento IN ('Ingreso', 'Egreso')),
-    Monto DECIMAL(12,2) NOT NULL,
+    TipoMovimiento NVARCHAR(10) NOT NULL
+        CHECK (TipoMovimiento IN ('Ingreso', 'Egreso')),
+    Monto DECIMAL(12,2) NOT NULL CHECK (Monto > 0),
     Concepto NVARCHAR(250) NULL,
-    FOREIGN KEY (IDCaja) REFERENCES Caja(IDCaja)
+    IDAporte INT NULL,                   -- origen si es un ingreso por aporte
+    IDGasto INT NULL,                    -- origen si es un egreso por gasto
+    FOREIGN KEY (IDCaja) REFERENCES Caja(IDCaja),
+    FOREIGN KEY (IDAporte) REFERENCES Aportes(IDAporte),
+    FOREIGN KEY (IDGasto) REFERENCES Gastos(IDGasto),
+    CONSTRAINT CK_MovimientoCaja_Origen CHECK (
+        (TipoMovimiento = 'Ingreso' AND IDGasto IS NULL)
+        OR (TipoMovimiento = 'Egreso' AND IDAporte IS NULL)
+    )
 )
 GO
