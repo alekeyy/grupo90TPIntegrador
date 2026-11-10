@@ -200,16 +200,16 @@ CREATE TABLE Entrenamientos (
     IDTipoEntrenamiento INT NOT NULL,
     Fecha DATE NOT NULL,
     Observaciones NVARCHAR(500) NULL,
-    FOREIGN KEY (IDTipoEntrenamiento) REFERENCES TipoEntrenamiento(IDTipoEntrenamiento),
-    FOREIGN KEY (IDVoluntario) REFERENCES Voluntarios(IDVoluntario)
+    FOREIGN KEY (IDTipoEntrenamiento) REFERENCES TipoEntrenamiento(IDTipoEntrenamiento)
 )
 GO
 
 CREATE TABLE AsistenciaEntrenamiento (
-    IDEntrenamiento INT PRIMARY KEY IDENTITY(1,1),
+    IDEntrenamiento INT NOT NULL,
     IDVoluntario INT NOT NULL,
     Observaciones NVARCHAR(500) NULL,
-    FOREIGN KEY (IDVoluntario) REFERENCES Entrenamientos(IDEntrenamiento),
+    PRIMARY KEY (IDEntrenamiento, IDVoluntario),
+    FOREIGN KEY (IDEntrenamiento) REFERENCES Entrenamientos(IDEntrenamiento),
     FOREIGN KEY (IDVoluntario) REFERENCES Voluntarios(IDVoluntario)
 )
 GO
