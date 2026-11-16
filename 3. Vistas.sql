@@ -5,10 +5,10 @@ USE DB_Bomberos;
 GO
 
 -- Llamado Vista
-SELECT * FROM VW_ULTIMA_MISION_REALIZADA
+--SELECT * FROM VW_ULTIMA_MISION_REALIZADA
 
 -- Vista 1
-CREATE OR ALTER VIEW VW_ULTIMA_MISION_REALIZADA
+CREATE VIEW VW_ULTIMA_MISION_REALIZADA
 AS
 SELECT
     M.IDMision,
@@ -32,7 +32,7 @@ WHERE M.IDMision = (
 GO
 
 -- Vista 2
-CREATE OR ALTER VIEW VW_Staff_Activo
+CREATE VIEW VW_Staff_Activo
 AS
 SELECT
     V.IDVoluntario,
@@ -53,7 +53,7 @@ GROUP BY V.IDVoluntario, V.Nombre, V.Apellido
 GO
 
 -- Vista 3
-CREATE OR ALTER VIEW VW_Equipamiento_Sin_Mantenimiento
+CREATE VIEW VW_Equipamiento_Sin_Mantenimiento
 AS
 SELECT
     EQ.IDEquipamiento,
